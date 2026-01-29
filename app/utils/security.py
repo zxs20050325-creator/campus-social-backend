@@ -6,6 +6,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
 from passlib.context import CryptContext
 from jwt.exceptions import InvalidTokenError
+from sqlalchemy import select  # 添加缺失的导入
 
 from app.config import settings
 from app.database import get_db
