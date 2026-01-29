@@ -1,7 +1,7 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
-sqlalchemy==2.0.23
-# 升级到支持 Python 3.12 的 1.x 版本
+# 升级到支持 Python 3.13 的版本
+sqlalchemy==2.0.29
 pydantic==1.10.16
 python-multipart==0.0.6
 passlib[bcrypt]==1.7.4
