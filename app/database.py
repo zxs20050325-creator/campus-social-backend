@@ -10,7 +10,7 @@ class Base(DeclarativeBase):
 
 # 创建异步引擎
 engine = create_async_engine(
-    settings.DATABASE_URL,
+    settings.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://"),
     echo=False,  # 设置为True可查看SQL查询
     pool_pre_ping=True,
     pool_recycle=300,
