@@ -2,8 +2,8 @@ fastapi==0.104.1
 uvicorn[standard]==0.24.0
 sqlalchemy==2.0.23
 # 降级到不需要 Rust 的 1.x 版本
-pydantic==2.5.2
-pydantic-settings==2.1.0
+pydantic==1.10.15
+# pydantic-settings==2.1.0  # 移除未使用的依赖
 python-multipart==0.0.6
 passlib[bcrypt]==1.7.4
 python-jose[cryptography]==3.3.0
