@@ -4,16 +4,27 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 import crud, models, schemas, database
 from database import engine, get_db
+import os
+from contextlib import asynccontextmanager
 
-# 创建所有表
-models.Base.metadata.create_all(bind=engine)
+# Render部署生命周期管理
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # 启动时创建数据库表
+    models.Base.metadata.create_all(bind=engine)
+    yield
 
-app = FastAPI(title="校园轻社交+资源置换平台", version="1.0.0")
+app = FastAPI(
+    title="校园轻社交+资源置换平台", 
+    version="1.0.0",
+    lifespan=lifespan
+)
 
-# 配置CORS中间件
+# 配置CORS中间件 - 生产环境中应限制为特定域名
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 在生产环境中应限制为特定域名
+    allow_origins=[frontend_url],  # 限制为前端域名，更安全
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,9 +1,11 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
-# 升级到支持 Python 3.13 的版本
-sqlalchemy==2.0.29
-pydantic==1.10.16
+sqlalchemy==2.0.23
+# 降级到不需要 Rust 的 1.x 版本
+pydantic==1.10.15
+pydantic-settings==2.1.0
 python-multipart==0.0.6
 passlib[bcrypt]==1.7.4
 python-jose[cryptography]==3.3.0
-alembic==1.12.1
+alembic==1.21.1
+psycopg2-binary==2.9.9  # 添加PostgreSQL驱动支持
