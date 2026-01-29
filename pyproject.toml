@@ -20,7 +20,7 @@ dependencies = [
     "passlib[bcrypt]>=1.7.4",
     "python-jose[cryptography]>=3.3.0",
     "alembic>=1.10.1",
-    "psycopg2-binary>=2.9.9",
+    "asyncpg>=0.28.0",
     "python-dotenv>=1.0.0",
     "redis>=5.0.0"
 ]
