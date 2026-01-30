@@ -10,19 +10,26 @@ services:
         value: 3.11.0
       - key: SECRET_KEY
         generateValue: true
+      - key: FRONTEND_URL
+        value: https://your-frontend-url.onrender.com  # 替换为你的前端URL
       - key: DATABASE_URL
-        fromDatabase:
-          name: campus-platform-db
-          property: connectionString
+        value: postgresql://<username>:<password>@<host>:<port>/campus_social_exchange
+        # 如果使用Render数据库，请参考以下配置
+        # fromDatabase:
+        #   name: campus-platform-db
+        #   property: connectionString
       - key: REDIS_URL
-        value: redis://localhost:6379
-    disk:
-      name: data
-      mountPath: /var/lib/database
-      sizeGB: 1
+        fromService:
+          name: campus-platform-redis
+          property: connectionString
+    healthCheckPath: /api/v1/
 
 databases:
   - name: campus-platform-db
     databaseName: campus_social_exchange
     user: campus_user
+    plan: starter
+
+redis:
+  - name: campus-platform-redis
     plan: starter
