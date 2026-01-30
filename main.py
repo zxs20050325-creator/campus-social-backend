@@ -50,7 +50,7 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     return user
 
 @app.get("/users/")
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):    
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
@@ -64,7 +64,7 @@ def read_exchanges(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
     exchanges = crud.get_exchanges(db, skip=skip, limit=limit)
     return exchanges
 
-@app.get("/exchanges/{exchange_id}", response_model=schemas.ExchangeResponse)
+@app.get("/exchanges/{exchange_id}", response_model=schemas.ExchangeResponse)      
 def read_exchange(exchange_id: int, db: Session = Depends(get_db)):
     exchange = crud.get_exchange(db, exchange_id=exchange_id)
     if exchange is None:
@@ -77,7 +77,7 @@ def create_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
     return crud.create_post(db=db, post=post)
 
 @app.get("/posts/", response_model=list[schemas.PostResponse])
-def read_posts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_posts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):    
     posts = crud.get_posts(db, skip=skip, limit=limit)
     return posts
 
