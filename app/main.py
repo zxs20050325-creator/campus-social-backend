@@ -8,7 +8,6 @@ from app.models import Base
 from app.api.v1 import users, posts, exchanges
 from app.config import settings
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # 启动时创建数据库表
