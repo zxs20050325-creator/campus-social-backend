@@ -13,11 +13,9 @@ services:
       - key: FRONTEND_URL
         value: https://your-frontend-url.onrender.com  # 替换为你的前端URL
       - key: DATABASE_URL
-        value: postgresql://<username>:<password>@<host>:<port>/campus_social_exchange
-        # 如果使用Render数据库，请参考以下配置
-        # fromDatabase:
-        #   name: campus-platform-db
-        #   property: connectionString
+        fromDatabase:
+          name: campus-platform-db
+          property: connectionString
       - key: REDIS_URL
         fromService:
           name: campus-platform-redis
